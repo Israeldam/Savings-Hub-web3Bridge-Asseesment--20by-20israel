@@ -57,6 +57,7 @@ export function calculateTotalAfterWeek(
 
 export function createStudent(
   id: string,
+  userId: string,
   name: string,
   tierId: number
 ): Student {
@@ -65,6 +66,7 @@ export function createStudent(
 
   return {
     id,
+    userId,
     name,
     tierId,
     joinedAt: new Date(),
