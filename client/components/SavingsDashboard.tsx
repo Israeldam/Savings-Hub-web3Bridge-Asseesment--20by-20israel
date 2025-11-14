@@ -15,14 +15,18 @@ export default function SavingsDashboard() {
       return;
     }
     progressToNextWeek();
-    toast.success(`Week ${currentWeek + 1} progress updated! Interest accrued.`);
+    toast.success(
+      `Week ${currentWeek + 1} progress updated! Interest accrued.`,
+    );
   };
 
   return (
     <div className="space-y-8">
       {/* Overview Stats */}
       <div>
-        <h2 className="text-2xl font-bold text-foreground mb-4">Group Overview</h2>
+        <h2 className="text-2xl font-bold text-foreground mb-4">
+          Group Overview
+        </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           <StatCard
             title="Current Week"
@@ -72,12 +76,21 @@ export default function SavingsDashboard() {
       <div className="bg-card rounded-xl border border-border p-6">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div>
-            <p className="text-sm text-muted-foreground mb-1">Total Group Balance</p>
+            <p className="text-sm text-muted-foreground mb-1">
+              Total Group Balance
+            </p>
             <p className="text-4xl font-bold text-primary">
-              ₦{totals.totalWithdrawable.toLocaleString("en-NG", { maximumFractionDigits: 0 })}
+              ₦
+              {totals.totalWithdrawable.toLocaleString("en-NG", {
+                maximumFractionDigits: 0,
+              })}
             </p>
             <p className="text-xs text-muted-foreground mt-2">
-              {totals.totalContributed} contributed + {totals.totalInterest.toLocaleString("en-NG", { maximumFractionDigits: 0 })} interest
+              {totals.totalContributed} contributed +{" "}
+              {totals.totalInterest.toLocaleString("en-NG", {
+                maximumFractionDigits: 0,
+              })}{" "}
+              interest
             </p>
           </div>
         </div>
@@ -87,7 +100,9 @@ export default function SavingsDashboard() {
       <div>
         <div className="flex items-center justify-between mb-4">
           <div>
-            <h2 className="text-2xl font-bold text-foreground">Group Members</h2>
+            <h2 className="text-2xl font-bold text-foreground">
+              Group Members
+            </h2>
             <p className="text-sm text-muted-foreground mt-1">
               {group.members.length === 0
                 ? "No members yet. Register to join!"

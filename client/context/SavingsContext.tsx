@@ -45,7 +45,12 @@ export function SavingsProvider({ children }: { children: React.ReactNode }) {
   }, [group]);
 
   const addStudent = (userId: string, name: string, tierId: number) => {
-    const newStudent = createStudent(`student-${Date.now()}`, userId, name, tierId);
+    const newStudent = createStudent(
+      `student-${Date.now()}`,
+      userId,
+      name,
+      tierId,
+    );
     const updatedMembers = [...group.members, newStudent];
     const newTotal = group.totalSaved + newStudent.currentBalance;
     setGroup({
@@ -68,7 +73,7 @@ export function SavingsProvider({ children }: { children: React.ReactNode }) {
     const updatedMembers = group.members.map((member) => progressWeek(member));
     const newTotal = updatedMembers.reduce(
       (sum, member) => sum + member.currentBalance,
-      0
+      0,
     );
     setGroup({
       members: updatedMembers,

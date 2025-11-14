@@ -30,7 +30,10 @@ export default function Index() {
             <h1 className="text-xl font-bold text-foreground">SavingsHub</h1>
           </div>
           <nav className="hidden sm:flex items-center gap-6">
-            <a href="#features" className="text-sm font-medium text-muted-foreground hover:text-foreground">
+            <a
+              href="#features"
+              className="text-sm font-medium text-muted-foreground hover:text-foreground"
+            >
               Features
             </a>
             {isAuthenticated ? (
@@ -58,7 +61,10 @@ export default function Index() {
                   </Button>
                 </Link>
                 <Link to="/signup">
-                  <Button size="sm" className="bg-gradient-primary hover:opacity-90 text-white">
+                  <Button
+                    size="sm"
+                    className="bg-gradient-primary hover:opacity-90 text-white"
+                  >
                     Sign Up
                   </Button>
                 </Link>
@@ -155,7 +161,8 @@ export default function Index() {
               {
                 icon: Users,
                 title: "Community",
-                description: "12 students working together towards financial goals",
+                description:
+                  "12 students working together towards financial goals",
               },
               {
                 icon: TrendingUp,
@@ -165,7 +172,8 @@ export default function Index() {
               {
                 icon: Shield,
                 title: "Secure & Transparent",
-                description: "Real-time tracking with detailed interest calculations",
+                description:
+                  "Real-time tracking with detailed interest calculations",
               },
               {
                 icon: Target,
@@ -190,7 +198,6 @@ export default function Index() {
         </div>
       </section>
 
-
       {/* CTA Section */}
       <section className="py-20 sm:py-28">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -198,8 +205,8 @@ export default function Index() {
             Ready to Start Your Savings Journey?
           </h3>
           <p className="text-xl text-muted-foreground mb-8">
-            Join our savings group today and watch your money grow with guaranteed
-            weekly returns.
+            Join our savings group today and watch your money grow with
+            guaranteed weekly returns.
           </p>
           {isAuthenticated ? (
             <Link to="/dashboard">

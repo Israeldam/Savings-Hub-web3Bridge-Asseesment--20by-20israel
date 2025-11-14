@@ -15,9 +15,15 @@ export default function StudentCard({ student }: StudentCardProps) {
   if (!tier) return null;
 
   const handleWithdraw = () => {
-    if (window.confirm(`Are you sure you want to withdraw? You'll get ₦${student.currentBalance.toLocaleString("en-NG", { maximumFractionDigits: 0 })}`)) {
+    if (
+      window.confirm(
+        `Are you sure you want to withdraw? You'll get ₦${student.currentBalance.toLocaleString("en-NG", { maximumFractionDigits: 0 })}`,
+      )
+    ) {
       withdrawStudentMember(student.id);
-      toast.success(`${student.name} has withdrawn ₦${student.currentBalance.toLocaleString("en-NG", { maximumFractionDigits: 0 })}`);
+      toast.success(
+        `${student.name} has withdrawn ₦${student.currentBalance.toLocaleString("en-NG", { maximumFractionDigits: 0 })}`,
+      );
     }
   };
 
@@ -37,22 +43,34 @@ export default function StudentCard({ student }: StudentCardProps) {
 
       <div className="space-y-3 mb-5">
         <div className="flex justify-between items-center">
-          <span className="text-sm text-muted-foreground">Principal Amount:</span>
+          <span className="text-sm text-muted-foreground">
+            Principal Amount:
+          </span>
           <span className="font-semibold text-foreground">
             ₦{tier.amount.toLocaleString()}
           </span>
         </div>
         <div className="flex justify-between items-center">
-          <span className="text-sm text-muted-foreground">Accumulated Interest:</span>
+          <span className="text-sm text-muted-foreground">
+            Accumulated Interest:
+          </span>
           <span className="font-semibold text-secondary">
-            +₦{student.accumulatedInterest.toLocaleString("en-NG", { maximumFractionDigits: 0 })}
+            +₦
+            {student.accumulatedInterest.toLocaleString("en-NG", {
+              maximumFractionDigits: 0,
+            })}
           </span>
         </div>
         <div className="h-px bg-border" />
         <div className="flex justify-between items-center">
-          <span className="text-sm font-semibold text-foreground">Current Balance:</span>
+          <span className="text-sm font-semibold text-foreground">
+            Current Balance:
+          </span>
           <span className="text-lg font-bold text-primary">
-            ₦{student.currentBalance.toLocaleString("en-NG", { maximumFractionDigits: 0 })}
+            ₦
+            {student.currentBalance.toLocaleString("en-NG", {
+              maximumFractionDigits: 0,
+            })}
           </span>
         </div>
       </div>

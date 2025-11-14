@@ -10,8 +10,16 @@ interface AuthUser {
 interface AuthContextType {
   user: AuthUser | null;
   isAuthenticated: boolean;
-  login: (email: string, password: string) => { success: boolean; error?: string };
-  signup: (username: string, email: string, password: string, tierId: number) => { success: boolean; error?: string };
+  login: (
+    email: string,
+    password: string,
+  ) => { success: boolean; error?: string };
+  signup: (
+    username: string,
+    email: string,
+    password: string,
+    tierId: number,
+  ) => { success: boolean; error?: string };
   logout: () => void;
 }
 
@@ -49,7 +57,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
   }, []);
 
-  const login = (email: string, password: string): { success: boolean; error?: string } => {
+  const login = (
+    email: string,
+    password: string,
+  ): { success: boolean; error?: string } => {
     if (!email || !password) {
       return { success: false, error: "Email and password are required" };
     }
@@ -60,7 +71,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
     // Find user with matching email and password
     const foundUser = allUsers.find(
-      (u: any) => u.email === email && u.password === password
+      (u: any) => u.email === email && u.password === password,
     );
 
     if (!foundUser) {
@@ -84,14 +95,17 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     username: string,
     email: string,
     password: string,
-    tierId: number
+    tierId: number,
   ): { success: boolean; error?: string } => {
     if (!username || !email || !password) {
       return { success: false, error: "All fields are required" };
     }
 
     if (password.length < 6) {
-      return { success: false, error: "Password must be at least 6 characters" };
+      return {
+        success: false,
+        error: "Password must be at least 6 characters",
+      };
     }
 
     // Get all users from localStorage

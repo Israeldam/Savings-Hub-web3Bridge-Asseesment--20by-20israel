@@ -43,14 +43,14 @@ export function validateTierAmount(amount: number, tierId: number): boolean {
 
 export function calculateWeeklyInterest(
   principal: number,
-  weeklyInterestRate: number
+  weeklyInterestRate: number,
 ): number {
   return (principal * weeklyInterestRate) / 100;
 }
 
 export function calculateTotalAfterWeek(
   principal: number,
-  weeklyInterestRate: number
+  weeklyInterestRate: number,
 ): number {
   return principal + calculateWeeklyInterest(principal, weeklyInterestRate);
 }
@@ -59,7 +59,7 @@ export function createStudent(
   id: string,
   userId: string,
   name: string,
-  tierId: number
+  tierId: number,
 ): Student {
   const tier = getTierById(tierId);
   if (!tier) throw new Error("Invalid tier ID");
@@ -82,7 +82,7 @@ export function progressWeek(student: Student): Student {
 
   const weeklyInterest = calculateWeeklyInterest(
     student.currentBalance,
-    tier.weeklyInterestRate
+    tier.weeklyInterestRate,
   );
   const newBalance = student.currentBalance + weeklyInterest;
 
@@ -106,7 +106,7 @@ export function calculateGroupTotals(group: SavingsGroup): {
 
   const totalInterest = group.members.reduce(
     (sum, member) => sum + member.accumulatedInterest,
-    0
+    0,
   );
 
   const totalWithdrawable = totalContributed + totalInterest;
@@ -120,7 +120,7 @@ export function calculateGroupTotals(group: SavingsGroup): {
 
 export function withdrawStudent(
   group: SavingsGroup,
-  studentId: string
+  studentId: string,
 ): { updatedGroup: SavingsGroup; withdrawnAmount: number } {
   const student = group.members.find((m) => m.id === studentId);
   if (!student) return { updatedGroup: group, withdrawnAmount: 0 };
@@ -133,8 +133,7 @@ export function withdrawStudent(
     totalSaved:
       group.totalSaved -
       withdrawnAmount +
-      (student.accumulatedInterest -
-        student.accumulatedInterest), // Just reduce total by what was withdrawn
+      (student.accumulatedInterest - student.accumulatedInterest), // Just reduce total by what was withdrawn
   };
 
   return {

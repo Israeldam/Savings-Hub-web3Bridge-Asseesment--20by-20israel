@@ -57,7 +57,10 @@ export default function RegistrationForm() {
           </p>
         </div>
 
-        <TierSelector selectedTierId={selectedTierId} onSelect={setSelectedTierId} />
+        <TierSelector
+          selectedTierId={selectedTierId}
+          onSelect={setSelectedTierId}
+        />
 
         <Button
           type="submit"

@@ -7,7 +7,12 @@ interface StatCardProps {
   highlight?: boolean;
 }
 
-export default function StatCard({ title, value, icon, highlight }: StatCardProps) {
+export default function StatCard({
+  title,
+  value,
+  icon,
+  highlight,
+}: StatCardProps) {
   return (
     <div
       className={`
@@ -21,10 +26,14 @@ export default function StatCard({ title, value, icon, highlight }: StatCardProp
     >
       <div className="flex items-start justify-between gap-4">
         <div>
-          <p className={`text-sm font-medium mb-2 ${highlight ? "text-white/80" : "text-muted-foreground"}`}>
+          <p
+            className={`text-sm font-medium mb-2 ${highlight ? "text-white/80" : "text-muted-foreground"}`}
+          >
             {title}
           </p>
-          <p className={`text-3xl font-bold ${highlight ? "text-white" : "text-foreground"}`}>
+          <p
+            className={`text-3xl font-bold ${highlight ? "text-white" : "text-foreground"}`}
+          >
             {value}
           </p>
         </div>

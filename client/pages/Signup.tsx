@@ -88,8 +88,8 @@ export default function Signup() {
                 Join Our Savings Group
               </h2>
               <p className="text-lg text-muted-foreground">
-                Be part of a collective investment in a Play-to-Earn blockchain game with
-                guaranteed weekly returns.
+                Be part of a collective investment in a Play-to-Earn blockchain
+                game with guaranteed weekly returns.
               </p>
             </div>
 
@@ -100,7 +100,8 @@ export default function Signup() {
                   Secure & Transparent
                 </h3>
                 <p className="text-sm text-muted-foreground">
-                  Track your savings in real-time with detailed weekly interest calculations
+                  Track your savings in real-time with detailed weekly interest
+                  calculations
                 </p>
               </div>
 
@@ -233,7 +234,9 @@ export default function Signup() {
                           {(
                             tier.amount +
                             (tier.amount * tier.weeklyInterestRate) / 100
-                          ).toLocaleString("en-NG", { maximumFractionDigits: 0 })}
+                          ).toLocaleString("en-NG", {
+                            maximumFractionDigits: 0,
+                          })}
                         </p>
                       </div>
                     </button>

@@ -29,13 +29,15 @@ export default function Dashboard() {
       return;
     }
     progressToNextWeek();
-    toast.success(`Week ${currentWeek + 1} progress updated! Interest accrued.`);
+    toast.success(
+      `Week ${currentWeek + 1} progress updated! Interest accrued.`,
+    );
   };
 
   const handleWithdraw = (studentId: string, studentName: string) => {
     if (
       window.confirm(
-        `Are you sure you want to withdraw your funds? You'll be removed from the group.`
+        `Are you sure you want to withdraw your funds? You'll be removed from the group.`,
       )
     ) {
       withdrawStudentMember(studentId);
@@ -55,7 +57,9 @@ export default function Dashboard() {
             <ArrowLeft className="w-5 h-5" />
             Home
           </Link>
-          <h1 className="text-xl font-bold text-foreground">Savings Dashboard</h1>
+          <h1 className="text-xl font-bold text-foreground">
+            Savings Dashboard
+          </h1>
           <Button
             onClick={handleLogout}
             variant="outline"
@@ -76,9 +80,14 @@ export default function Dashboard() {
             <div className="bg-gradient-primary text-white rounded-2xl p-8 shadow-lg">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <p className="text-white/80 text-sm mb-2">Welcome, {user?.username}</p>
+                  <p className="text-white/80 text-sm mb-2">
+                    Welcome, {user?.username}
+                  </p>
                   <h2 className="text-3xl font-bold mb-2">
-                    ₦{currentUserStudent.currentBalance.toLocaleString("en-NG", { maximumFractionDigits: 0 })}
+                    ₦
+                    {currentUserStudent.currentBalance.toLocaleString("en-NG", {
+                      maximumFractionDigits: 0,
+                    })}
                   </h2>
                   <p className="text-white/80">Your Current Balance</p>
                 </div>
@@ -88,7 +97,9 @@ export default function Dashboard() {
                     <p className="font-bold text-lg">{currentUserTier?.name}</p>
                   </div>
                   <div>
-                    <p className="text-white/80 text-sm mb-1">Weekly Interest</p>
+                    <p className="text-white/80 text-sm mb-1">
+                      Weekly Interest
+                    </p>
                     <p className="font-bold text-lg">
                       {currentUserTier?.weeklyInterestRate}%
                     </p>
@@ -100,9 +111,15 @@ export default function Dashboard() {
                     </p>
                   </div>
                   <div>
-                    <p className="text-white/80 text-sm mb-1">Interest Earned</p>
+                    <p className="text-white/80 text-sm mb-1">
+                      Interest Earned
+                    </p>
                     <p className="font-bold text-lg">
-                      ₦{currentUserStudent.accumulatedInterest.toLocaleString("en-NG", { maximumFractionDigits: 0 })}
+                      ₦
+                      {currentUserStudent.accumulatedInterest.toLocaleString(
+                        "en-NG",
+                        { maximumFractionDigits: 0 },
+                      )}
                     </p>
                   </div>
                 </div>
@@ -112,16 +129,22 @@ export default function Dashboard() {
 
           {/* Group Overview Stats */}
           <div>
-            <h2 className="text-2xl font-bold text-foreground mb-4">Group Overview</h2>
+            <h2 className="text-2xl font-bold text-foreground mb-4">
+              Group Overview
+            </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               <div className="bg-white rounded-xl p-6 border border-border">
-                <p className="text-sm text-muted-foreground mb-2">Current Week</p>
+                <p className="text-sm text-muted-foreground mb-2">
+                  Current Week
+                </p>
                 <p className="text-3xl font-bold text-foreground">
                   Week {currentWeek}
                 </p>
               </div>
               <div className="bg-white rounded-xl p-6 border border-border">
-                <p className="text-sm text-muted-foreground mb-2">Active Members</p>
+                <p className="text-sm text-muted-foreground mb-2">
+                  Active Members
+                </p>
                 <p className="text-3xl font-bold text-foreground">
                   {group.members.length}
                 </p>
@@ -135,9 +158,14 @@ export default function Dashboard() {
                 </p>
               </div>
               <div className="bg-gradient-primary text-white rounded-xl p-6">
-                <p className="text-sm text-white/80 mb-2">Total Interest Earned</p>
+                <p className="text-sm text-white/80 mb-2">
+                  Total Interest Earned
+                </p>
                 <p className="text-3xl font-bold">
-                  ₦{totals.totalInterest.toLocaleString("en-NG", { maximumFractionDigits: 0 })}
+                  ₦
+                  {totals.totalInterest.toLocaleString("en-NG", {
+                    maximumFractionDigits: 0,
+                  })}
                 </p>
               </div>
             </div>
@@ -171,11 +199,16 @@ export default function Dashboard() {
                   Total Group Balance
                 </p>
                 <p className="text-4xl font-bold text-primary">
-                  ₦{totals.totalWithdrawable.toLocaleString("en-NG", { maximumFractionDigits: 0 })}
+                  ₦
+                  {totals.totalWithdrawable.toLocaleString("en-NG", {
+                    maximumFractionDigits: 0,
+                  })}
                 </p>
                 <p className="text-xs text-muted-foreground mt-2">
                   {totals.totalContributed.toLocaleString()} contributed +{" "}
-                  {totals.totalInterest.toLocaleString("en-NG", { maximumFractionDigits: 0 })}{" "}
+                  {totals.totalInterest.toLocaleString("en-NG", {
+                    maximumFractionDigits: 0,
+                  })}{" "}
                   interest
                 </p>
               </div>
@@ -245,7 +278,11 @@ export default function Dashboard() {
                             Interest Earned
                           </p>
                           <p className="font-semibold text-secondary">
-                            +₦{member.accumulatedInterest.toLocaleString("en-NG", { maximumFractionDigits: 0 })}
+                            +₦
+                            {member.accumulatedInterest.toLocaleString(
+                              "en-NG",
+                              { maximumFractionDigits: 0 },
+                            )}
                           </p>
                         </div>
                         <div>
@@ -261,16 +298,17 @@ export default function Dashboard() {
                             Balance
                           </p>
                           <p className="font-bold text-lg text-primary">
-                            ₦{member.currentBalance.toLocaleString("en-NG", { maximumFractionDigits: 0 })}
+                            ₦
+                            {member.currentBalance.toLocaleString("en-NG", {
+                              maximumFractionDigits: 0,
+                            })}
                           </p>
                         </div>
                       </div>
 
                       {isCurrentUser && (
                         <Button
-                          onClick={() =>
-                            handleWithdraw(member.id, member.name)
-                          }
+                          onClick={() => handleWithdraw(member.id, member.name)}
                           variant="outline"
                           className="w-full text-sm font-semibold hover:bg-destructive/10 hover:text-destructive border-destructive text-destructive"
                         >

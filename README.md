@@ -9,6 +9,7 @@ The Student Savings Group application enables 12 students to collectively manage
 ## ✨ Features
 
 ### 1. **Student Registration**
+
 - Enter name and select a savings tier
 - Three tier options with different investment amounts and interest rates:
   - **Tier 1**: ₦10,000 with 5% weekly interest
@@ -18,6 +19,7 @@ The Student Savings Group application enables 12 students to collectively manage
 - Real-time member count and balance updates
 
 ### 2. **Savings Dashboard**
+
 - **Group Overview**: Display total members, current week, total contributed, and total interest earned
 - **Member Breakdown**: View individual member details including:
   - Principal amount
@@ -28,11 +30,13 @@ The Student Savings Group application enables 12 students to collectively manage
 - **Total Group Balance**: Shows combined withdrawable amount for all members
 
 ### 3. **Tier Validation**
+
 - Validates that each student selects the correct amount for their chosen tier
 - Prevents registration without a tier selection
 - Clear feedback for invalid inputs through toast notifications
 
 ### 4. **Withdrawal Management**
+
 - Students can withdraw their funds at any time
 - Withdrawal includes:
   - All principal contributions
@@ -44,12 +48,14 @@ The Student Savings Group application enables 12 students to collectively manage
 ## 🚀 Getting Started
 
 ### Prerequisites
+
 - Node.js (v18+)
 - pnpm (recommended) or npm
 
 ### Installation
 
 1. **Install dependencies**
+
    ```bash
    pnpm install
    # or
@@ -57,6 +63,7 @@ The Student Savings Group application enables 12 students to collectively manage
    ```
 
 2. **Start the development server**
+
    ```bash
    pnpm dev
    # or
@@ -144,16 +151,19 @@ server/
 ## 💡 Business Logic
 
 ### Tier Definitions
+
 - **Tier 1**: ₦10,000 principal, 5% weekly interest
 - **Tier 2**: ₦20,000 principal, 10% weekly interest
 - **Tier 3**: ₦30,000 principal, 20% weekly interest
 
 ### Interest Calculation
+
 - Weekly interest is calculated as: `Interest = Principal × (Weekly Interest Rate / 100)`
 - New balance after week: `Balance = Previous Balance + Interest`
 - Interest compounds weekly as members earn interest on their previous balance + accumulated interest
 
 ### Example Calculation (Tier 2 over 4 weeks)
+
 - Week 0: ₦20,000
 - Week 1: ₦20,000 + ₦2,000 (10%) = ₦22,000
 - Week 2: ₦22,000 + ₦2,200 (10%) = ₦24,200
@@ -163,6 +173,7 @@ server/
 ## 🎨 Design & Styling
 
 The application uses:
+
 - **Framework**: React 18 with TypeScript
 - **Styling**: Tailwind CSS 3 with custom theme
 - **Component Library**: Radix UI components
@@ -171,6 +182,7 @@ The application uses:
 - **Color Scheme**: Modern gradient with primary purple (#6366F1) and secondary blue (#0099FF)
 
 ### Key Design Features
+
 - Responsive grid layouts for desktop and mobile
 - Gradient backgrounds for visual appeal
 - Card-based component design
@@ -250,6 +262,7 @@ The app uses React Context API for global state management through `SavingsConte
 ## 📞 Support
 
 For issues or questions:
+
 1. Check the dashboard to verify all member details
 2. Use the browser console to check for any error messages
 3. Ensure you've followed the registration and withdrawal steps correctly

@@ -29,7 +29,9 @@ export default function TierSelector({
             `}
           >
             <div className="text-left">
-              <h3 className="font-bold text-lg text-primary mb-2">{tier.name}</h3>
+              <h3 className="font-bold text-lg text-primary mb-2">
+                {tier.name}
+              </h3>
               <div className="space-y-2 text-sm">
                 <p className="text-foreground">
                   <span className="font-semibold">Amount:</span> ₦

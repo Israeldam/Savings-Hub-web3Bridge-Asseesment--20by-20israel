@@ -16,7 +16,9 @@ export default function Registration() {
             <ArrowLeft className="w-5 h-5" />
             Back
           </Link>
-          <h1 className="text-xl font-bold text-foreground">Student Savings Group</h1>
+          <h1 className="text-xl font-bold text-foreground">
+            Student Savings Group
+          </h1>
           <div className="w-16" />
         </div>
       </header>
@@ -31,8 +33,8 @@ export default function Registration() {
                 Join Our Savings Group
               </h2>
               <p className="text-lg text-muted-foreground">
-                Be part of a collective investment in a Play-to-Earn blockchain game with
-                guaranteed weekly returns.
+                Be part of a collective investment in a Play-to-Earn blockchain
+                game with guaranteed weekly returns.
               </p>
             </div>
 
@@ -43,7 +45,8 @@ export default function Registration() {
                   Secure & Transparent
                 </h3>
                 <p className="text-sm text-muted-foreground">
-                  Track your savings in real-time with detailed weekly interest calculations
+                  Track your savings in real-time with detailed weekly interest
+                  calculations
                 </p>
               </div>
 
