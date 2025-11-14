@@ -80,19 +80,31 @@ export default function Index() {
                 blockchain games with guaranteed weekly returns up to 20%.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link to="/register">
-                  <Button className="w-full sm:w-auto bg-gradient-primary hover:opacity-90 text-white text-base font-semibold py-6 px-8">
-                    Join Now <ArrowRight className="w-5 h-5 ml-2" />
-                  </Button>
-                </Link>
-                <Link to="/dashboard">
-                  <Button
-                    variant="outline"
-                    className="w-full sm:w-auto text-base font-semibold py-6 px-8"
-                  >
-                    View Dashboard
-                  </Button>
-                </Link>
+                {isAuthenticated ? (
+                  <>
+                    <Link to="/dashboard">
+                      <Button className="w-full sm:w-auto bg-gradient-primary hover:opacity-90 text-white text-base font-semibold py-6 px-8">
+                        Go to Dashboard <ArrowRight className="w-5 h-5 ml-2" />
+                      </Button>
+                    </Link>
+                  </>
+                ) : (
+                  <>
+                    <Link to="/signup">
+                      <Button className="w-full sm:w-auto bg-gradient-primary hover:opacity-90 text-white text-base font-semibold py-6 px-8">
+                        Join Now <ArrowRight className="w-5 h-5 ml-2" />
+                      </Button>
+                    </Link>
+                    <Link to="/login">
+                      <Button
+                        variant="outline"
+                        className="w-full sm:w-auto text-base font-semibold py-6 px-8"
+                      >
+                        Login
+                      </Button>
+                    </Link>
+                  </>
+                )}
               </div>
             </div>
 
