@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useAuth } from "@/context/AuthContext";
 import { Button } from "@/components/ui/button";
 import {
   Users,
@@ -6,10 +7,16 @@ import {
   Wallet,
   Shield,
   ArrowRight,
-  Target,
+  LogOut,
 } from "lucide-react";
 
 export default function Index() {
+  const { isAuthenticated, logout } = useAuth();
+
+  const handleLogout = () => {
+    logout();
+  };
+
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation */}
@@ -25,14 +32,37 @@ export default function Index() {
             <a href="#features" className="text-sm font-medium text-muted-foreground hover:text-foreground">
               Features
             </a>
-            <a href="#tiers" className="text-sm font-medium text-muted-foreground hover:text-foreground">
-              Tiers
-            </a>
-            <Link to="/dashboard">
-              <Button variant="outline" size="sm">
-                Dashboard
-              </Button>
-            </Link>
+            {isAuthenticated ? (
+              <>
+                <Link to="/dashboard">
+                  <Button variant="outline" size="sm">
+                    Dashboard
+                  </Button>
+                </Link>
+                <Button
+                  onClick={handleLogout}
+                  variant="outline"
+                  size="sm"
+                  className="gap-2"
+                >
+                  <LogOut className="w-4 h-4" />
+                  Logout
+                </Button>
+              </>
+            ) : (
+              <>
+                <Link to="/login">
+                  <Button variant="outline" size="sm">
+                    Login
+                  </Button>
+                </Link>
+                <Link to="/signup">
+                  <Button size="sm" className="bg-gradient-primary hover:opacity-90 text-white">
+                    Sign Up
+                  </Button>
+                </Link>
+              </>
+            )}
           </nav>
         </div>
       </header>
