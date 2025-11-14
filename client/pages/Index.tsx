@@ -200,11 +200,19 @@ export default function Index() {
             Join our savings group today and watch your money grow with guaranteed
             weekly returns.
           </p>
-          <Link to="/register">
-            <Button className="bg-gradient-primary hover:opacity-90 text-white text-base font-semibold py-6 px-8">
-              Get Started Now <ArrowRight className="w-5 h-5 ml-2" />
-            </Button>
-          </Link>
+          {isAuthenticated ? (
+            <Link to="/dashboard">
+              <Button className="bg-gradient-primary hover:opacity-90 text-white text-base font-semibold py-6 px-8">
+                Go to Dashboard <ArrowRight className="w-5 h-5 ml-2" />
+              </Button>
+            </Link>
+          ) : (
+            <Link to="/signup">
+              <Button className="bg-gradient-primary hover:opacity-90 text-white text-base font-semibold py-6 px-8">
+                Get Started Now <ArrowRight className="w-5 h-5 ml-2" />
+              </Button>
+            </Link>
+          )}
         </div>
       </section>
 
