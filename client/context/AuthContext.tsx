@@ -22,6 +22,22 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   // Initialize from localStorage on mount
   useEffect(() => {
+    // Create demo account if no users exist
+    const allUsersStr = localStorage.getItem("auth_users") || "[]";
+    const allUsers = JSON.parse(allUsersStr);
+
+    if (allUsers.length === 0) {
+      const demoUser = {
+        id: "demo-user-001",
+        username: "Demo User",
+        email: "demo@example.com",
+        password: "demo123",
+        tierId: 2,
+        createdAt: new Date().toISOString(),
+      };
+      localStorage.setItem("auth_users", JSON.stringify([demoUser]));
+    }
+
     const storedUser = localStorage.getItem("auth_user");
     if (storedUser) {
       try {
