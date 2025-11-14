@@ -15,6 +15,7 @@ export const TIERS: Tier[] = [
 // Student and Group types
 export interface Student {
   id: string;
+  userId: string;
   name: string;
   tierId: number;
   joinedAt: Date;
