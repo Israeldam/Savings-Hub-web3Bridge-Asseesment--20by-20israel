@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
 import { Student, SavingsGroup } from "@shared/savings";
 import {
   createStudent,
@@ -9,13 +9,15 @@ import {
 
 interface SavingsContextType {
   group: SavingsGroup;
-  addStudent: (name: string, tierId: number) => void;
+  addStudent: (userId: string, name: string, tierId: number) => void;
   withdrawStudentMember: (studentId: string) => void;
   progressToNextWeek: () => void;
   currentWeek: number;
 }
 
 const SavingsContext = createContext<SavingsContextType | undefined>(undefined);
+
+const STORAGE_KEY = "savings_group_data";
 
 export function SavingsProvider({ children }: { children: React.ReactNode }) {
   const [group, setGroup] = useState<SavingsGroup>({
@@ -24,8 +26,26 @@ export function SavingsProvider({ children }: { children: React.ReactNode }) {
     currentWeek: 0,
   });
 
-  const addStudent = (name: string, tierId: number) => {
-    const newStudent = createStudent(`student-${Date.now()}`, name, tierId);
+  // Load group data from localStorage on mount
+  useEffect(() => {
+    const storedGroup = localStorage.getItem(STORAGE_KEY);
+    if (storedGroup) {
+      try {
+        const parsed = JSON.parse(storedGroup);
+        setGroup(parsed);
+      } catch (error) {
+        console.error("Failed to parse stored group data:", error);
+      }
+    }
+  }, []);
+
+  // Save group data to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(group));
+  }, [group]);
+
+  const addStudent = (userId: string, name: string, tierId: number) => {
+    const newStudent = createStudent(`student-${Date.now()}`, userId, name, tierId);
     const updatedMembers = [...group.members, newStudent];
     const newTotal = group.totalSaved + newStudent.currentBalance;
     setGroup({
