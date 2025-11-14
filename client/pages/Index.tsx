@@ -8,6 +8,7 @@ import {
   Shield,
   ArrowRight,
   LogOut,
+  Target,
 } from "lucide-react";
 
 export default function Index() {
